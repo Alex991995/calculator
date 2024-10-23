@@ -11,9 +11,11 @@
     "prepare": "husky"
   },
   "lint-staged": {
-    "src/**/*": "prettier --write --ignore-unknown",
-    "src/*.js": "eslint --cache --fix",
-    "src/*.{js,css,md}": "prettier --write"
+    "*.{js}": [
+      "prettier --write --ignore-unknown",
+      "eslint --cache --fix",
+      "prettier --write"
+    ]
   },
   "author": "Alex",
   "license": "ISC",
