@@ -11,9 +11,9 @@
     "prepare": "husky"
   },
   "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown",
-    "*.js": "eslint --cache --fix",
-    "*.{js,css,md}": "prettier --write"
+    "./src/**/*": "prettier --write --ignore-unknown",
+    "./src/*.js": "eslint --cache --fix",
+    "./src/*.{js,css,md}": "prettier --write"
   },
   "author": "Alex",
   "license": "ISC",
