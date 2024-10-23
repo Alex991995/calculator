@@ -10,12 +10,8 @@
     "prod": "webpack --mode production",
     "prepare": "husky"
   },
-  "lint-staged": {
-    "*.{js}": [
-      "prettier --write --ignore-unknown",
-      "eslint --cache --fix",
-      "prettier --write"
-    ]
+ "lint-staged": {
+    "src/**/*.js": ["prettier --write","eslint --fix", "git add"]
   },
   "author": "Alex",
   "license": "ISC",
