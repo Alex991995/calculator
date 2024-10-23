@@ -4,7 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculator</title>
+    <link rel="stylesheet" href="style.css" />
     <script defer src="index.js"></script>
   </head>
-  <body></body>
+  <body>
+    <div class="theme" data-theme="light">
+      <div class="calculator">
+        <input class="input" type="text" />
+        <button class="key" onclick="{addToInput('+')}">+</button>
+        <button class="key" onclick="{addToInput('-')}">-</button>
+
+        <button class="key" onclick="{addToInput('1')}">1</button>
+        <button class="key" onclick="{addToInput('2')}">2</button>
+
+        <button class="key" onclick="{compute()}">=</button>
+
+        <button class="key" onclick="{clearInput()}">C</button>
+      </div>
+    </div>
+  </body>
 </html>

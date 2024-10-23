@@ -8,16 +8,11 @@
     "build": "webpack",
     "dev": "webpack --mode development",
     "prod": "webpack --mode production",
-    "prepare": "husky && husky install"
+    "prepare": "husky"
   },
   "lint-staged": {
-    "src/**/*.js": [
-      "prettier --write",
-      "eslint --fix",
-      "git add"
-    ],
-    "*.js": "eslint --cache --fix",
-    "*.{js,css,md}": "prettier --write"
+    "src/**/*.{js,html,css}": "prettier --write",
+    "src/**/*.js": "eslint --cache --fix"
   },
   "author": "Alex",
   "license": "ISC",
