@@ -10,8 +10,14 @@
     "prod": "webpack --mode production",
     "prepare": "husky"
   },
- "lint-staged": {
-    "src/**/*.js": ["prettier --write","eslint --fix", "git add"]
+  "lint-staged": {
+    "src/**/*.js": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ],
+    "*.js": "eslint --cache --fix",
+    "*.{js,css,md}": "prettier --write"
   },
   "author": "Alex",
   "license": "ISC",
@@ -21,6 +27,7 @@
     "css-loader": "^7.1.2",
     "eslint": "^9.13.0",
     "eslint-config-prettier": "^9.1.0",
+    "git-format-staged": "^3.1.1",
     "globals": "^15.11.0",
     "html-webpack-plugin": "^5.6.2",
     "husky": "^9.1.6",
