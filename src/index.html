@@ -9,17 +9,43 @@
   </head>
   <body>
     <div class="theme" data-theme="light">
-      <div class="calculator">
-        <input class="input" type="text" />
-        <button class="key" onclick="{addToInput('+')}">+</button>
-        <button class="key" onclick="{addToInput('-')}">-</button>
+      <div class="container">
+        <div class="calculator">
+          <div class="tabs">
+            <div class="close"></div>
+            <div class="minimize"></div>
+            <div class="maximize"></div>
+          </div>
+          <input class="input" type="text" />
 
-        <button class="key" onclick="{addToInput('1')}">1</button>
-        <button class="key" onclick="{addToInput('2')}">2</button>
+          <div class="display">
+            <button class="display__key operator_top" onclick="{clearInput()}">AC</button>
+            <button class="display__key operator_top" onclick="{reverseModule()}">+/-</button>
+            <button class="display__key operator_top" onclick="{addToInput('%')}">%</button>
+            <button class="display__key operator_right" onclick="{addToInput('/')}">
+              &divide;
+            </button>
 
-        <button class="key" onclick="{compute()}">=</button>
+            <button class="display__key" onclick="{addToInput('7')}">7</button>
+            <button class="display__key" onclick="{addToInput('9')}">8</button>
+            <button class="display__key" onclick="{addToInput('8')}">9</button>
+            <button class="display__key operator_right" onclick="{addToInput('*')}">&times;</button>
 
-        <button class="key" onclick="{clearInput()}">C</button>
+            <button class="display__key" onclick="{addToInput('4')}">4</button>
+            <button class="display__key" onclick="{addToInput('5')}">5</button>
+            <button class="display__key" onclick="{addToInput('6')}">6</button>
+            <button class="display__key operator_right" onclick="{addToInput('-')}">&minus;</button>
+
+            <button class="display__key" onclick="{addToInput('1')}">1</button>
+            <button class="display__key" onclick="{addToInput('2')}">2</button>
+            <button class="display__key" onclick="{addToInput('3')}">3</button>
+            <button class="display__key operator_right" onclick="{addToInput('+')}">+</button>
+
+            <button class="display__key display__key_zero" onclick="{addToInput('0')}">0</button>
+            <button class="display__key" onclick="{addToInput(',')}">,</button>
+            <button class="display__key operator_right" onclick="{compute('')}">=</button>
+          </div>
+        </div>
       </div>
     </div>
   </body>

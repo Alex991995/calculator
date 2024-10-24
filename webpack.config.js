@@ -9,7 +9,7 @@ export default {
     main: './src/index.js',
   },
   output: {
-    filename: 'build.js',
+    filename: 'index.js',
     path: resolve(__dirname, 'dist'),
   },
   mode: 'none',
@@ -25,6 +25,8 @@ export default {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
+      inject : 'body'
+
     }),
   ],
 };

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const input = document.querySelector('.input');
 
 function addToInput(key) {
@@ -12,3 +13,5 @@ function compute() {
   const res = Function('return ' + input.value);
   console.log(res());
 }
+
+console.log();
