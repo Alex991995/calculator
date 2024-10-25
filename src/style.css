@@ -65,8 +65,6 @@
 .input {
   width: 100%;
   text-align: right;
-  unicode-bidi: bidi-override;
-  direction: rtl;
 
   padding: 10px 0 10px;
   font-size: 32px;

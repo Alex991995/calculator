@@ -4,23 +4,48 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculator</title>
-    <link rel="stylesheet" href="style.css" />
-    <script defer src="index.js"></script>
   </head>
   <body>
     <div class="theme" data-theme="light">
-      <div class="calculator">
-        <input class="input" type="text" />
-        <button class="key" onclick="{addToInput('+')}">+</button>
-        <button class="key" onclick="{addToInput('-')}">-</button>
+      <div class="container">
+        <div class="calculator">
+          <div class="tabs">
+            <div class="close"></div>
+            <div class="minimize"></div>
+            <div class="maximize"></div>
+          </div>
+          <input class="input" type="text" />
 
-        <button class="key" onclick="{addToInput('1')}">1</button>
-        <button class="key" onclick="{addToInput('2')}">2</button>
+          <div class="display">
+            <button class="display__key operator_top cleaner">AC</button>
+            <button class="display__key operator_top reverseModule">+/-</button>
+            <button class="display__key operator_top">%</button>
+            <button class="display__key operator_right">&divide;</button>
 
-        <button class="key" onclick="{compute()}">=</button>
+            <button class="display__key">7</button>
+            <button class="display__key">8</button>
+            <button class="display__key">9</button>
+            <button class="display__key operator_right">&times;</button>
 
-        <button class="key" onclick="{clearInput()}">C</button>
+            <button class="display__key">4</button>
+            <button class="display__key">5</button>
+            <button class="display__key">6</button>
+            <button class="display__key operator_right">&minus;</button>
+
+            <button class="display__key">1</button>
+            <button class="display__key">2</button>
+            <button class="display__key">3</button>
+            <button class="display__key operator_right">+</button>
+
+
+            <button class="display__key display__key_zero">0</button>
+            <button class="display__key">,</button>
+            <button class="display__key operator_right compute">=</button>
+          </div>
+        </div>
       </div>
     </div>
-  <script defer src="index.js"></script></body>
+
+    <script type="module" src="index.js"></script>
+  <script defer src="main.ef86409e5614ab4b514d.js"></script></body>
 </html>
