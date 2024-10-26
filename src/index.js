@@ -32,17 +32,20 @@ reverseModule.addEventListener('click', function () {
 
 compute.addEventListener('click', function () {
   if (firstNum && sign && secondNum) {
-    let expression = firstNum + sign + secondNum;
-
+    const expression = firstNum + sign + secondNum;
     try {
       const newExpression = replaceValidSign(expression, sign);
 
-      const res = Function('return ' + newExpression);
-      input.value = res();
-      firstNum = res();
+      const resFn = Function('return ' + newExpression);
+      let result = String(resFn());
+      result = result.replace('.', ',');
+
+      input.value = result;
+      firstNum = result;
       secondNum = '';
       sign = '';
-    } catch {
+    } catch (err) {
+      console.error(err);
       cleanData();
     }
   }
@@ -72,8 +75,9 @@ function addToInput() {
         input.value = '';
         if (isNum) {
           secondNum += digit;
+        } else {
+          sign = digit;
         }
-
         input.value = digit;
       }
     }

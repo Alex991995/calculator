@@ -1,7 +1,8 @@
 export function reverseModuleNumber(num) {
-  const digit = Number(num);
+  const numeric = String(num);
+  const digit = Number(numeric);
   if (digit > 0) {
     return String('-' + digit);
   }
-  return num.slice(1);
+  return numeric.slice(1);
 }

@@ -6,8 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "dev": "webpack serve --open --mode development",
-    "prod": "webpack serve --open --mode production",
+    "dev": "webpack  --mode development",
+    "prod": "webpack  --mode production",
+    "server": "webpack serve --open",
     "prepare": "husky"
   },
   "lint-staged": {
