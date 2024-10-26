@@ -1,13 +1,48 @@
 [data-theme='light'] {
-  --color-key: #ffffff;
+  --color-key: hsl(0, 0%, 100%);
 
-  --color-fg: #000000;
+  --bg-color-key: hsl(0, 0%, 49%);
+  --bg-color-key-hover: hsl(0, 0%, 60%);
+  --bg-color-key-active: hsl(0, 0%, 70%);
+
+  --bg-input: hsl(0, 0%, 31%);
+
+  --bg-color-theme: #ffffff;
+
+  --bg-color-operator_top: hsl(0, 0%, 39%);
+  --bg-color-operator_top-hover: hsl(0, 0%, 50%);
+  --bg-color-operator_top-active: hsl(0, 0%, 60%);
+
+  --bg-color-operator_right: hsl(36, 100%, 52%);
+  --bg-color-operator_right-hover: hsl(36, 100%, 62%);
+  --bg-color-operator_right-active: hsl(36, 100%, 72%);
 }
 
 [data-theme='dark'] {
   --color-key: #000000;
+  --bg-color-key: hsl(0, 19%, 84%);
+  --bg-color-key-hover: hsl(0, 19%, 74%);
+  --bg-color-key-active: hsl(0, 19%, 64%);
 
-  --color-fg: #ffffff;
+  --bg-input: hsl(0, 71%, 81%);
+
+  --bg-color-theme: rgb(0, 0, 0);
+
+  --bg-color-operator_top: hsl(0, 19%, 54%);
+  --bg-color-operator_top-hover: hsl(0, 19%, 64%);
+  --bg-color-operator_top-active: hsl(0, 19%, 74%);
+
+  --bg-color-operator_right: hsl(123, 100%, 52%);
+  --bg-color-operator_right-hover: hsl(123, 100%, 42%);
+  --bg-color-operator_right-active: hsl(123, 100%, 32%);
+}
+
+body {
+  margin: 0;
+}
+
+.theme {
+  background-color: var(--bg-color-theme);
 }
 
 .container {
@@ -32,25 +67,31 @@
 .display__key {
   border: 1px solid #606060;
   color: var(--color-key);
-  background-color: #7d7d7d;
+  background-color: var(--bg-color-key);
   padding: 10px 15px;
   font-size: 20px;
   cursor: pointer;
 
   &.operator_top {
-    background-color: hsl(0, 0%, 39%);
+    background-color: var(--bg-color-operator_top);
 
     &:hover {
-      background-color: hsl(0, 0%, 50%);
+      background-color: var(--bg-color-operator_top-hover);
+    }
+    &:active {
+      background-color: var(--bg-color-operator_top-active);
     }
   }
 
   &.operator_right {
-    background-color: hsl(36, 100%, 52%);
+    background-color: var(--bg-color-operator_right);
     font-size: 32px;
 
     &:hover {
-      background-color: hsl(36, 100%, 62%);
+      background-color: var(--bg-color-operator_right-hover);
+    }
+    &:active {
+      background-color: var(--bg-color-operator_right-active);
     }
   }
   &.display__key_zero {
@@ -58,7 +99,10 @@
   }
 
   &:hover {
-    background-color: hsl(0, 0%, 60%);
+    background-color: var(--bg-color-key-hover);
+  }
+  &:active {
+    background-color: var(--bg-color-key-active);
   }
 }
 
@@ -71,14 +115,14 @@
   border: none;
 
   color: var(--color-key);
-  background-color: #4e4e4e;
+  background-color: var(--bg-input);
 }
 
 .tabs {
   display: flex;
   gap: 8px;
   padding: 10px;
-  background-color: #4e4e4e;
+  background-color: var(--bg-input);
 }
 
 .tabs div {
@@ -98,4 +142,58 @@
 
 .maximize {
   background-color: #27c93f;
+}
+
+.container-theme {
+  display: flex;
+  justify-content: end;
+  padding-top: 20px;
+  margin-right: 10px;
+}
+
+.container-switcher {
+  width: 51px;
+  height: 31px;
+  position: relative;
+}
+
+.checkbox {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.switch {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-color: #e9e9eb;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+
+.slider {
+  width: 27px;
+  height: 27px;
+  position: absolute;
+  left: calc(50% - 27px / 2 - 10px);
+  top: calc(50% - 27px / 2);
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow:
+    0px 3px 8px rgba(0, 0, 0, 0.15),
+    0px 3px 1px rgba(0, 0, 0, 0.06);
+  transition: all 0.2s ease-out;
+  cursor: pointer;
+}
+
+.checkbox:checked + .switch {
+  background-color: #34c759;
+}
+
+.checkbox:checked + .switch .slider {
+  left: calc(50% - 27px / 2 + 10px);
+  top: calc(50% - 27px / 2);
 }

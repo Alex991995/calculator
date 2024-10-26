@@ -1,5 +1,5 @@
 export function replaceValidSign(expression, sign) {
-  expression = expression.replace(',', '.');
+  expression = expression.replace(/,/g, '.');
   if (sign === '−') {
     const replacedExpression = expression.replace('−', '-');
     const res = replaceDoubleMinusToOnePlus(replacedExpression);
@@ -9,7 +9,6 @@ export function replaceValidSign(expression, sign) {
   } else if (sign === '\u00D7') {
     return expression.replace('\u00D7', '*');
   }
-
   return expression;
 }
 
@@ -20,4 +19,16 @@ export function replaceDoubleMinusToOnePlus(expression) {
     return arr.join('');
   }
   return expression;
+}
+
+export function checkTheLastLetterIsComma(str, digit) {
+  if (!str && digit == ',') return false;
+  const isNum = Number.isFinite(+digit);
+  if (str.endsWith(',') && !isNum) return false;
+  return true;
+}
+
+export function isZeroFirstLatter(str, digit) {
+  if (!str && digit == '0' && str.length < 1) return false;
+  return true;
 }

@@ -1,6 +1,14 @@
-import { replaceValidSign } from './script/helperFunctions.js';
+import { MATH_OPERATOR } from './script/constant.js';
+import {
+  checkTheLastLetterIsComma,
+  isZeroFirstLatter,
+  replaceValidSign,
+} from './script/helperFunctions.js';
 import { reverseModuleNumber } from './script/reverseModuleNumber.js';
+import { changeTheme } from './script/themeChanging.js';
 import './style.css';
+
+const checkbox = document.querySelector('.checkbox');
 
 const input = document.querySelector('.input');
 const display__keys = document.querySelectorAll('.display__key');
@@ -11,6 +19,8 @@ const compute = document.querySelector('.compute');
 let firstNum = '';
 let secondNum = '';
 let sign = '';
+
+checkbox.addEventListener('click', changeTheme);
 
 for (let key of display__keys) {
   key.addEventListener('click', addToInput);
@@ -33,6 +43,7 @@ reverseModule.addEventListener('click', function () {
 compute.addEventListener('click', function () {
   if (firstNum && sign && secondNum) {
     const expression = firstNum + sign + secondNum;
+
     try {
       const newExpression = replaceValidSign(expression, sign);
 
@@ -53,28 +64,35 @@ compute.addEventListener('click', function () {
 
 function addToInput() {
   const digit = this.textContent;
-  let isNum = false;
-  if (digit === ',') {
-    isNum = true;
-  } else {
-    isNum = Number.isFinite(+digit);
-  }
+  const isOperator = MATH_OPERATOR.includes(digit);
 
-  if (digit !== '=' && digit !== '+/-') {
-    if (isNum && !sign) {
+  const isFirstNumLastComma = checkTheLastLetterIsComma(firstNum, digit);
+  const isSecondNumLastComma = checkTheLastLetterIsComma(secondNum, digit);
+
+  const isFirstNumZero = isZeroFirstLatter(firstNum, digit);
+  const isSecondNumZero = isZeroFirstLatter(secondNum, digit);
+
+  if (digit !== '=' && digit !== '+/-' && isFirstNumLastComma && isFirstNumZero) {
+    // записываю в первое число
+    if (!isOperator && !sign) {
       input.value += digit;
       firstNum += digit;
-    } else if (!isNum && !sign) {
+
+      // записываю оператор
+    } else if (isOperator && !sign) {
       input.value = digit;
       sign = digit;
-    } else if (sign) {
-      if (secondNum && isNum) {
+    } else if (sign && isSecondNumLastComma && isSecondNumZero) {
+      // дозаписываю во второе число
+      if (secondNum && !isOperator) {
         secondNum += digit;
         input.value += digit;
       } else {
         input.value = '';
-        if (isNum) {
+        // если оператор есть записываю во второе число
+        if (!isOperator) {
           secondNum += digit;
+          // перезаписваю оператор
         } else {
           sign = digit;
         }
