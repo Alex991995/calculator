@@ -1,6 +1,7 @@
 import { MATH_OPERATOR } from './script/constant.js';
 import {
   checkTheLastLetterIsComma,
+  isMathOperatorFirstLatter,
   isZeroFirstLatter,
   replaceValidSign,
 } from './script/helperFunctions.js';
@@ -46,7 +47,7 @@ compute.addEventListener('click', function () {
 
     try {
       const newExpression = replaceValidSign(expression, sign);
-
+      console.log(newExpression);
       const resFn = Function('return ' + newExpression);
       let result = String(resFn());
       result = result.replace('.', ',');
@@ -72,7 +73,15 @@ function addToInput() {
   const isFirstNumZero = isZeroFirstLatter(firstNum, digit);
   const isSecondNumZero = isZeroFirstLatter(secondNum, digit);
 
-  if (digit !== '=' && digit !== '+/-' && isFirstNumLastComma && isFirstNumZero) {
+  const isFirstNumMathOperator = isMathOperatorFirstLatter(firstNum, digit);
+
+  if (
+    digit !== '=' &&
+    digit !== '+/-' &&
+    isFirstNumLastComma &&
+    isFirstNumZero &&
+    isFirstNumMathOperator
+  ) {
     // записываю в первое число
     if (!isOperator && !sign) {
       input.value += digit;
